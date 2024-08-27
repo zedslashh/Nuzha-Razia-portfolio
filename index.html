@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuzha Razia - Portfolio</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #f4f4f4;
+            color: #333;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 36px;
+            margin: 10px 0;
+            color: #333;
+        }
+        .hover-paragraph {
+            display: none;
+            background: #fff;
+            color: #333;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            margin-top: 10px;
+            white-space: normal;
+            position: relative;
+        }
+        header:hover .hover-paragraph {
+            display: block;
+        }
+       
+
+        nav {
+            background-color: #484444;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 0 15px;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        nav a:hover {
+            color: #b5b5b5;
+            transform: translateY(-2px);
+        }
+
+        
+        .contact-info, .social-icons {
+            margin-bottom: 30px;
+        }
+        .contact-info h3, .section-title {
+            font-size: 24px;
+            color: #555;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .contact-info p {
+            margin: 5px 0;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 50px;
+        }
+        .social-icons a {
+            color: #fff;
+            background-color: #484444;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .social-icons a:hover {
+            background-color: #999999;
+            transform: scale(1.1);
+        }
+        section {
+            margin-bottom: 50px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        .skill-item {
+            background-color: #a1a1a1;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        .skill-item:hover {
+            background-color: #a4a4a4;
+            transform: scale(1.05);
+        }
+        .certificate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .certificate-card {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .certificate-card img {
+            max-width: 100%;
+            border-radius: 5px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .certificate-card h4 {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #333;
+        }
+        .certificate-card a {
+            color: #4682b4;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+        .certificate-card a:hover {
+            text-decoration: underline;
+        }
+        .certificate-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+        ul.projects {
+            padding: 0;
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        ul.projects li {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+            width: calc(50% - 20px);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        ul.projects li:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        ul.projects li img.project-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        ul.projects li:hover img.project-image {
+            opacity: 1;
+        }
+        ul.projects li strong {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #484444;
+        }
+        ul.projects li em {
+            font-size: 14px;
+            color: #666;
+        }
+        .contact-form {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .contact-form h3 {
+            margin-top: 0;
+            color: #828282;
+        }
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+        }
+        .contact-form input, .contact-form textarea {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .contact-form button {
+            padding: 10px;
+            border: none;
+            background-color: #777b7e;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .contact-form button:hover {
+            background-color: #8e9091;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#academic">Academic Record</a>
+        <a href="#internships">Internships</a>
+        <a href="#skills">Skills</a>
+        <a href="#certificates">Certificates</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <br></br>
+    <br></br>
+    <div class="container">
+        <header>
+            <img src="profile.png" alt="Profile Picture" class="profile-image">
+            <h1>Nuzha Razia</h1>
+            <div class="hover-paragraph">
+                <p>Welcome to my portfolio! Here you will find details about my academic achievements, skills, certifications, and projects. Feel free to explore and connect with me.</p>
+            </div>
+        </header>
+
+        <div class="contact-info">
+            <h3>Contact Information</h3>
+            <p><strong>Phone:</strong> +91 9037043693</p>
+            <p><strong>Date of Birth:</strong> December 30, 2003</p>
+        </div>
+
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/nuzha-razia-a88635249/">LinkedIn</a>
+            <a href="https://github.com/zedslashh">GitHub</a>
+            <a href="mailto:nuzha.razia@gmail.com">Email</a>
+            <a href="Nuzha Razia-Resume.pdf" download>Download CV</a>
+        </div>
+
+        <section id="academic">
+            <h3 class="section-title">Academic Record</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Degree/Certificate</th>
+                        <th>Institute or Board</th>
+                        <th>CGPA/Percentage</th>
+                        <th>Year</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Bachelor of Technology</td>
+                        <td>KPR Institute of Engineering and Technology</td>
+                        <td>9.3</td>
+                        <td>2026</td>
+                    </tr>
+                    <tr>
+                        <td>Higher Secondary</td>
+                        <td>CBSE</td>
+                        <td>92.6%</td>
+                        <td>2022</td>
+                    </tr>
+                    <tr>
+                        <td>Secondary</td>
+                        <td>CBSE</td>
+                        <td>94.8%</td>
+                        <td>2020</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section id="internships">
+            <h3 class="section-title">Internships</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Internship</th>
+                        <th>Company</th>
+                        <th>Domain</th>
+                        <th>Year</th>
+                        <th>Certificate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>PowerBI Intern</td>
+                        <td>Al Nahla Solutions - Muscat, Oman</td>
+                        <td>Data Visualization and Database Management</td>
+                        <td>2024</td>
+                        <td><a href="Nuzha Internship Certificate.pdf">View Certificate</a></td>
+                    </tr>
+                    <tr>
+                        <td>Machine Learning Intern</td>
+                        <td>Six30 Labs - Bangalore, India</td>
+                        <td>LLM Implementations, Conversational AI - Speech to Text, AI Implementations</td>
+                        <td>2024</td>
+                        <td><a href="Certificate- Nuzha Razia.pdf">View Certificate</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="skills">
+            <h3 class="section-title">Skills</h3>
+            <div class="skills-grid">
+                <div class="skill-item"><strong>Languages</strong><br>Python, SQL, C/C++, HTML, CSS, JavaScript, MongoDB, PowerBI</div>
+                <div class="skill-item"><strong>Libraries</strong><br>Matplotlib, Seaborn, Streamlit, Tkinter, Scikit-learn, Numpy, Pandas</div>
+                <div class="skill-item"><strong>Technologies</strong><br>Data Analysis, Machine Learning, Database Management, Software Skills</div>
+                <div class="skill-item"><strong>Tools</strong><br>Jupyter, Google-Microsoft Workspace, Visual Studio</div>
+            </div>
+            
+        </section>
+
+        <section id="certifications">
+            <h3 class="section-title">Certifications</h3>
+            <div class="certificate-grid">
+                <div class="certificate-card">
+                    <img src="Data analytics with python.png" alt="Data Analytics with Python">
+                    <h4>Data Analytics with Python</h4>
+                    <a href="#" onclick="showCertificate('certificate1')">View Certificate</a>
+                </div>
+                <div class="certificate-card">
+                    <img src="Krishtec.jpeg" alt="Innovations using IoT">
+                    <h4>Innovations using IoT</h4>
+                    <a href="#" onclick="showCertificate('certificate2')">View Certificate</a>
+                </div>
+                <div class="certificate-card">
+                    <img src="Python basic.png" alt="HackerRank-Python Basic">
+                    <h4>HackerRank-Python Basic</h4>
+                    <a href="#" onclick="showCertificate('certificate3')">View Certificate</a>
+                </div>
+                <div class="certificate-card">
+                    <img src="Get started with python.png" alt="Google-Get Started with Python">
+                    <h4>Google-Get Started with Python</h4>
+                    <a href="#" onclick="showCertificate('certificate4')">View Certificate</a>
+                </div>
+                <div class="certificate-card">
+                    <img src="Nuzha_Razia20221203-64-vvp5we.jpg" alt="Front End Development-HTML">
+                    <h4>Front End Development-HTML</h4>
+                    <a href="#" onclick="showCertificate('certificate5')">View Certificate</a>
+                </div>
+                <div class="certificate-card">
+                    <img src="Nuzha_Razia20221204-64-1vka1gx.jpg" alt="Front End Development-CSS">
+                    <h4>Front End Development-CSS</h4>
+                    <a href="#" onclick="showCertificate('certificate6')">View Certificate</a>
+                </div>
+                <div class="certificate-card">
+                    <img src="Acquiring Data.png" alt="NASSCOM-Acquiring Data">
+                    <h4>NASSCOM-Acquiring Data</h4>
+                    <a href="#" onclick="showCertificate('certificate7')">View Certificate</a>
+                </div>
+                <div class="certificate-card">
+                    <img src="Vortex-software development.jpeg" alt="Software Development Workshop">
+                    <h4>Software Development Workshop</h4>
+                    <a href="#" onclick="showCertificate('certificate8')">View Certificate</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h3 class="section-title">Projects</h3>
+            <ul class="projects">
+                <li>
+                    <strong>Luna</strong>
+                    <em>• An AI-powered voice assistant capable of executing voice commands such as opening websites, setting reminders, opening the camera, and more.</em>
+                    <br><em>• Employed web technologies and the Speech Recognition API for capturing and processing voice inputs, along with the Web Speech API for text-to-speech functionalities.</em>
+                    <br><em>• Developed an intuitive and responsive user interface that enhances user interaction with the assistant.</em>
+                    <img src="luna.png" alt="Luna Image" class="project-image">
+                </li>
+                <li>
+                    <strong>VocaTrans</strong>
+                    <em>• An audio transcriber app that transcribes both live and uploaded audio files.</em>
+                    <br><em>• Integrated the Whisper model for high-quality transcription and utilized Streamlit for creating an interactive and user-friendly interface.</em>
+                    <br><em>• Ensured seamless audio processing with FFmpeg support, enabling diverse audio format handling.</em>
+                    <img src="Vocatrans.png" alt="VocaTrans Image" class="project-image">
+                </li>
+                <li>
+                    <strong>QuantaWell</strong>
+                    <em>• A medical chatbot with three primary functions: mental health companion, symptom assistance, and medicine information provision.</em>
+                    <br><em>• Employed Gemini, HuggingFace API, and LLAMA2 model for implementing the chatbot.</em>
+                    <img src="QuantaWell.png" alt="QuantaWell Image" class="project-image">
+                </li>
+                <li>
+                    <strong>LexiLink</strong>
+                    <em>• A web-based application based on natural language processing using Streamlit, which detects the input language and auto-translates it to English.</em>
+                    <br><em>• Process was facilitated by employing the inbuilt Google Trans library available in Python.</em>
+                    <img src="luna.png" alt="LexiLink Image" class="project-image">
+                </li>
+                <li>
+                    <strong>Login Website</strong>
+                    <em>• A web-based application using JavaScript, HTML, and CSS to facilitate user login and application for a product website.</em>
+                    <br><em>• A responsive website that embeds a login and registration form.</em>
+                    <img src="luna.png" alt="Login Website Image" class="project-image">
+                </li>
+            </ul>
+        </section>
+
+        <section id="contact">
+            <h3 class="section-title">Contact Me</h3>
+            <div class="contact-form">
+                <form action="#" method="POST">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 Nuzha Razia. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
